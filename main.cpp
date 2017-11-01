@@ -3,13 +3,17 @@
 #include "input.h"
 #include "Dice.h"
 #include "PlayInfo.h"
+#include <algorithm>
 
 using namespace std;
 
+
+void compareScores(PlayInfo &player1, PlayInfo &player2, PlayInfo &player3, PlayInfo &player4,
+                   PlayInfo &player5);
 void scoreCard(PlayInfo &player1, PlayInfo &player2, PlayInfo &player3, PlayInfo &player4,
                PlayInfo &player5);
 
-// Using Mersienne Twister (sp?) random number generator, and uniform_int_distribution for the 1-6 die cast.
+// Using Mersenne Twister (sp?) random number generator, and uniform_int_distribution for the 1-6 die cast.
 mt19937 mt((unsigned int) time(
 		nullptr)); // Apparently these are okay to put as a global according to the internet, I dunno
 uniform_int_distribution<> die_cast(1, 6);
@@ -132,6 +136,7 @@ int main()
 			}
 			scoreCard(player1, player2, player3, player4, player5);
 		}
+		compareScores(player1, player2, player3, player4, player5);
 		play = playAgain();
 	} while (play);
 	return 0;
@@ -329,5 +334,31 @@ void throws(PlayInfo &player)
 			}
 
 		}
+	}
+}
+
+void compareScores(PlayInfo &player1, PlayInfo &player2, PlayInfo &player3, PlayInfo &player4,
+                   PlayInfo &player5)
+{
+	int topScore = std::max({player1.getPoints(),player2.getPoints(),player3.getPoints(),player4.getPoints(),player5.getPoints()});
+	if (player1.getPoints() == topScore)
+	{
+		cout << player1.getName() << " wins with " << player1.getPoints() << "!";
+	}
+	if (player2.getPoints() == topScore)
+	{
+		cout << player2.getName() << " wins with " << player2.getPoints() << "!";
+	}
+	if (player3.getPoints() == topScore)
+	{
+		cout << player3.getName() << " wins with " << player3.getPoints() << "!";
+	}
+	if (player4.getPoints() == topScore)
+	{
+		cout << player4.getName() << " wins with " << player4.getPoints() << "!";
+	}
+	if (player5.getPoints() == topScore)
+	{
+		cout << player5.getName() << " wins with " << player5.getPoints() << "!";
 	}
 }

@@ -34,8 +34,6 @@ public:
 
 	void checkUpper(int cat, PlayInfo &player);
 
-	void zeroArrays();
-
 	friend class PlayInfo;
 	friend void throws(PlayInfo &player);
 };
