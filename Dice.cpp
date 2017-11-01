@@ -99,67 +99,56 @@ void Dice::fullHouse(PlayInfo &player)
  */
 void Dice::threeofaKind(PlayInfo &player)
 {
-	int ones{ 0 };
-	int twos{ 0 };
-	int threes{ 0 };
-	int fours{ 0 };
-	int fives{ 0 };
-	int sixes{ 0 };
+	int numbers[6]{ 0 };
 	for (int i : m_dValue)
 	{
 		switch (i)
 		{
 			case 1:
-				ones++;
+				numbers[0]++;
 				break;
 			case 2:
-				twos += 2;
+				numbers[1] += 2;
 				break;
 			case 3:
-				threes += 3;
+				numbers[2] += 3;
 				break;
 			case 4:
-				fours += 4;
+				numbers[3] += 4;
 				break;
 			case 5:
-				fives += 5;
+				numbers[4] += 5;
 				break;
 			case 6:
-				sixes += 6;
+				numbers[5] += 6;
 				break;
 			default:
 				break;
 		}
 	}
-	if (ones >= 3)
+	if (numbers[0] >= 3)
 	{
-		ones = 3;
-		player.incrementPoints(ones, 8);
+		player.incrementPoints(numbers[0], 8);
 	}
-	if (twos >= 6)
+	if (numbers[1] >= 6)
 	{
-		twos = 6;
-		player.incrementPoints(twos, 8);
+		player.incrementPoints(numbers[1], 8);
 	}
-	if (threes >= 9)
+	if (numbers[2] >= 9)
 	{
-		threes = 9;
-		player.incrementPoints(threes, 8);
+		player.incrementPoints(numbers[2], 8);
 	}
-	if (fours >= 12)
+	if (numbers[3] >= 12)
 	{
-		fours = 12;
-		player.incrementPoints(fours, 8);
+		player.incrementPoints(numbers[3], 8);
 	}
-	if (fives >= 15)
+	if (numbers[4] >= 15)
 	{
-		fives = 15;
-		player.incrementPoints(fives, 8);
+		player.incrementPoints(numbers[4], 8);
 	}
-	if (sixes >= 18)
+	if (numbers[5] >= 18)
 	{
-		sixes = 18;
-		player.incrementPoints(sixes, 8);
+		player.incrementPoints(numbers[5], 8);
 	}
 }
 
@@ -169,67 +158,56 @@ void Dice::threeofaKind(PlayInfo &player)
  */
 void Dice::fourofaKind(PlayInfo &player)
 {
-	int ones{ 0 };
-	int twos{ 0 };
-	int threes{ 0 };
-	int fours{ 0 };
-	int fives{ 0 };
-	int sixes{ 0 };
+	int numbers[6]{ 0 };
 	for (int i : m_dValue)
 	{
 		switch (i)
 		{
 			case 1:
-				ones++;
+				numbers[0]++;
 				break;
 			case 2:
-				twos += 2;
+				numbers[1] += 2;
 				break;
 			case 3:
-				threes += 3;
+				numbers[2] += 3;
 				break;
 			case 4:
-				fours += 4;
+				numbers[3] += 4;
 				break;
 			case 5:
-				fives += 5;
+				numbers[4] += 5;
 				break;
 			case 6:
-				sixes += 6;
+				numbers[5] += 6;
 				break;
 			default:
 				break;
 		}
 	}
-	if (ones >= 3)
+	if (numbers[0] >= 4)
 	{
-		ones = 4;
-		player.incrementPoints(ones, 9);
+		player.incrementPoints(numbers[0], 9);
 	}
-	if (twos >= 8)
+	if (numbers[1] >= 8)
 	{
-		twos = 8;
-		player.incrementPoints(twos, 8);
+		player.incrementPoints(numbers[1], 9);
 	}
-	if (threes >= 12)
+	if (numbers[2] >= 12)
 	{
-		threes = 12;
-		player.incrementPoints(threes, 8);
+		player.incrementPoints(numbers[2], 9);
 	}
-	if (fours >= 16)
+	if (numbers[3] >= 16)
 	{
-		fours = 16;
-		player.incrementPoints(fours, 8);
+		player.incrementPoints(numbers[3], 9);
 	}
-	if (fives >= 20)
+	if (numbers[4] >= 20)
 	{
-		fives = 20;
-		player.incrementPoints(fives, 8);
+		player.incrementPoints(numbers[4], 9);
 	}
-	if (sixes >= 24)
+	if (numbers[5] >= 24)
 	{
-		sixes = 24;
-		player.incrementPoints(sixes, 8);
+		player.incrementPoints(numbers[5], 9);
 	}
 }
 
@@ -239,62 +217,56 @@ void Dice::fourofaKind(PlayInfo &player)
  */
 void Dice::yahtzee(PlayInfo &player)
 {
-	int ones{ 0 };
-	int twos{ 0 };
-	int threes{ 0 };
-	int fours{ 0 };
-	int fives{ 0 };
-	int sixes{ 0 };
+	int numbers[6]{ 0 };
 	for (int i : m_dValue)
 	{
 		switch (i)
 		{
 			case 1:
-				ones++;
+				numbers[0]++;
 				break;
 			case 2:
-				twos += 2;
+				numbers[1] += 2;
 				break;
 			case 3:
-				threes += 3;
+				numbers[2] += 3;
 				break;
 			case 4:
-				fours += 4;
+				numbers[3] += 4;
 				break;
 			case 5:
-				fives += 5;
+				numbers[4] += 5;
 				break;
 			case 6:
-				sixes += 6;
+				numbers[5] += 6;
 				break;
 			default:
 				break;
 		}
 	}
-	if (ones >= 5)
+	if (numbers[0] == 5)
 	{
-		ones = 5;
-		player.incrementPoints(ones, 13);
+		player.incrementPoints(numbers[0], 13);
 	}
-	if (twos >= 10)
+	if (numbers[1] == 10)
 	{
-		player.incrementPoints(twos, 13);
+		player.incrementPoints(numbers[1], 13);
 	}
-	if (threes >= 15)
+	if (numbers[2] == 15)
 	{
-		player.incrementPoints(threes, 13);
+		player.incrementPoints(numbers[2], 13);
 	}
-	if (fours >= 20)
+	if (numbers[3] == 20)
 	{
-		player.incrementPoints(fours, 13);
+		player.incrementPoints(numbers[3], 13);
 	}
-	if (fives >= 25)
+	if (numbers[4] == 25)
 	{
-		player.incrementPoints(fives, 13);
+		player.incrementPoints(numbers[4], 13);
 	}
-	if (sixes >= 30)
+	if (numbers[5] == 30)
 	{
-		player.incrementPoints(sixes, 13);
+		player.incrementPoints(numbers[5], 13);
 	}
 }
 
