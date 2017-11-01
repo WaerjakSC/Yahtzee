@@ -4,7 +4,6 @@
 #include "Dice.h"
 #include "PlayInfo.h"
 
-// TO-DO: Write comments, maybe a rule blurb at the start?
 using namespace std;
 
 void scoreCard(PlayInfo &player1, PlayInfo &player2, PlayInfo &player3, PlayInfo &player4,
@@ -18,6 +17,10 @@ uniform_int_distribution<> die_cast(1, 6);
 int main()
 {
 	cout << "Welcome to Yahtzee!\nUp to 5 people can play this game.\n";
+	cout
+			<< "You have three throws of five dice per turn.\nYou can choose to freeze/unfreeze a die at any time by typing its position in the dice sequence."
+			<< "A frozen (held) die will have the letter \"H\" next to it.\n"
+			<< "You can select any category to put your points in, but make sure your dice results fit that category.\n";
 	vector<string> players = names();
 	if (players.size() < 5)
 	{
@@ -28,16 +31,16 @@ int main()
 	PlayInfo player3(players[2], 0);
 	PlayInfo player4(players[3], 0);
 	PlayInfo player5(players[4], 0);
-	bool play{true};
+	bool play{ true };
 	do
 	{
 		cout << "                         Player 1: " << player1.getName() << "  Player 2: " << player2.getName()
 		     << " Player 3: "
 		     << player3.getName() << " Player 4: " << player4.getName() << " Player 5: " << player5.getName() << " \n";
 		scoreCard(player1, player2, player3, player4, player5);
-		int rounds{1};
-		int totalRounds{0};
-		bool gameOver{false};
+		int rounds{ 1 };
+		int totalRounds{ 0 };
+		bool gameOver{ false };
 		while (!gameOver)
 		{
 			switch (rounds)
@@ -223,8 +226,8 @@ void scoreCard(PlayInfo &player1, PlayInfo &player2, PlayInfo &player3, PlayInfo
 void throws(PlayInfo &player)
 {
 	Dice die;
-	int turnCount{0};
-	bool checkEarly{false};
+	int turnCount{ 0 };
+	bool checkEarly{ false };
 	while (turnCount <= 3)
 	{
 		turnCount++;
@@ -265,7 +268,7 @@ void throws(PlayInfo &player)
 				die.printValues();
 			}
 			cout << "\nWhich category would you like to use? (1-14) \n"; // Ask player which category they want to use
-			bool correct{false};
+			bool correct{ false };
 			while (!correct)
 			{
 				int select = iInput();
